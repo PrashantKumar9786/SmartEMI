@@ -3,11 +3,14 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const productRoutes = require("./routes/products");
+const path = require("path");
 
 const app = express();
 
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || "*" }));
 app.use(express.json());
+
+app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
 app.get("/api/health", (req, res) => {
   res.json({ success: true, message: "API is running" });

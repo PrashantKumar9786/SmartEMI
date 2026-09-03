@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatINR } from "../utils/format";
+import { resolveImageUrl } from "../api/client";
 
 export default function ProductCard({ product }) {
   return (
@@ -9,13 +10,13 @@ export default function ProductCard({ product }) {
     >
       <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden">
         <img
-          src={product.image}
+          src={resolveImageUrl(product.image)}
           alt={product.name}
-          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="h-full w-[83%] object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
       <div className="p-4">
-        <p className="text-xs uppercase tracking-wide text-gray-400 mb-1">
+        <p className="text-semibold uppercase tracking-wide text-black-900 mb-1">
           {product.brand}
         </p>
         <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
@@ -29,7 +30,7 @@ export default function ProductCard({ product }) {
             </span>
           )}
         </div>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-md text-black-500 mt-1">
           {product.variantCount} variant{product.variantCount !== 1 ? "s" : ""}{" "}
           available
         </p>

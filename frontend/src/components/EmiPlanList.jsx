@@ -22,7 +22,7 @@ export default function EmiPlanList({ plans, selectedPlan, onSelect }) {
               <div>
                 <p className="font-semibold text-gray-900">
                   {formatINR(plan.monthlyAmount)}{" "}
-                  <span className="font-normal text-gray-500">
+                  <span className="font-semibold text-gray-900">
                     x {plan.tenureMonths} months
                   </span>
                 </p>
@@ -32,13 +32,7 @@ export default function EmiPlanList({ plans, selectedPlan, onSelect }) {
                   </p>
                 )}
               </div>
-              <span
-                className={`text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap ${
-                  plan.interestRate === 0
-                    ? "bg-green-100 text-green-700"
-                    : "bg-amber-100 text-amber-700"
-                }`}
-              >
+              <span className="text-md font-medium px-2 py-1 rounded-full whitespace-nowrap text-black">
                 {plan.interestRate === 0
                   ? "0% interest"
                   : `${plan.interestRate}% interest`}

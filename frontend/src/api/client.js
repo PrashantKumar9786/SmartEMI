@@ -3,6 +3,16 @@ import axios from "axios";
 const baseURL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
 
+const backendOrigin = baseURL.replace(/\/api\/?$/, "");
+
+export function resolveImageUrl(imagePath) {
+  if (!imagePath) return "";
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+    return imagePath;
+  }
+  return `${backendOrigin}${imagePath}`;
+}
+
 const apiClient = axios.create({ baseURL });
 
 export async function fetchProducts() {

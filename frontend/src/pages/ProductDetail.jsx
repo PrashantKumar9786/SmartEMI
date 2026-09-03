@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchProductBySlug } from "../api/client";
 import { formatINR } from "../utils/format";
-import VariantSelector from "../components/VariantSelector";
+import ColorSwatchSelector from "../components/ColorSwatchSelector";
 import EmiPlanList from "../components/EmiPlanList";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
+import { resolveImageUrl } from "../api/client";
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -59,44 +60,52 @@ export default function ProductDetail() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <Link to="/" className="text-sm text-gray-500 hover:text-gray-800">
-        ← Back to products
+      <Link
+        to="/"
+        className="inline-flex items-center border border-gray-400 rounded-lg px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 transition"
+      >
+        Back to products
       </Link>
 
       <div className="mt-4 grid md:grid-cols-2 gap-8">
         {/* Left: image */}
-        <div className="bg-gray-50 rounded-2xl overflow-hidden aspect-square flex items-center justify-center">
-          <img
-            src={selectedVariant.image}
-            alt={`${product.name} ${selectedVariant.color}`}
-            className="w-full h-full object-cover"
+        <div>
+          <div className="bg-gray-50 rounded-2xl overflow-hidden aspect-square flex items-center justify-center">
+            <img
+              src={resolveImageUrl(selectedVariant.image)}
+              alt={`${product.name} ${selectedVariant.color}`}
+              className="w-[76%] h-[99%] object-cover"
+            />
+          </div>
+          <ColorSwatchSelector
+            variants={product.variants}
+            selectedVariant={selectedVariant}
+            onSelect={handleVariantSelect}
           />
         </div>
 
         {/* Right: details */}
         <div>
-          <p className="text-xs uppercase tracking-wide text-green-600 font-semibold mb-1">
+          <p className="text-xs uppercase tracking-wide text-red-600 font-semibold mb-1">
             New
           </p>
-          <h1 className="text-2xl font-bold text-gray-900">{product.name}</h1>
-          <p className="text-gray-500 mb-4">{selectedVariant.storage}</p>
+          <h1 className="text-2xl font-bold text-black-300 mb-1">
+            {product.name} ({selectedVariant.color}, {selectedVariant.storage})
+          </h1>
+          <p className="text-gray-700 mb-4">
+            (Storage: {selectedVariant.storage}, Color: {selectedVariant.color})
+          </p>
 
           <div className="flex items-baseline gap-2 mb-6">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-black-900">
               {formatINR(selectedVariant.price)}
             </span>
             {selectedVariant.mrp > selectedVariant.price && (
-              <span className="text-gray-400 line-through">
+              <span className="text-black-900 line-through">
                 {formatINR(selectedVariant.mrp)}
               </span>
             )}
           </div>
-
-          <VariantSelector
-            variants={product.variants}
-            selectedVariant={selectedVariant}
-            onSelect={handleVariantSelect}
-          />
 
           <EmiPlanList
             plans={selectedVariant.emiPlans}

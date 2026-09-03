@@ -45,7 +45,7 @@ function generateEmiPlans(price) {
 
 const products = [
   {
-    name: "iPhone 17 Pro",
+    name: "Apple iPhone 17 Pro",
     slug: "iphone-17-pro",
     brand: "Apple",
     category: "smartphone",
@@ -56,8 +56,7 @@ const products = [
         variantId: "256gb-silver",
         storage: "256GB",
         color: "Silver",
-        image:
-          "https://placehold.co/600x600/e8e8e8/1a1a1a?text=iPhone+17+Pro+Silver",
+        image: "/images/iphone_17_silver.jpg",
         mrp: 134900,
         price: 127400,
       },
@@ -65,8 +64,7 @@ const products = [
         variantId: "256gb-orange",
         storage: "256GB",
         color: "Orange",
-        image:
-          "https://placehold.co/600x600/d9622b/1a1a1a?text=iPhone+17+Pro+Orange",
+        image: "/images/iphone_17_orange.jpg",
         mrp: 134900,
         price: 127400,
       },
@@ -74,8 +72,7 @@ const products = [
         variantId: "512gb-blue",
         storage: "512GB",
         color: "Deep Blue",
-        image:
-          "https://placehold.co/600x600/1f3a5f/ffffff?text=iPhone+17+Pro+Blue",
+        image: "/images/iphone_17_deep_blue.jpg",
         mrp: 154900,
         price: 146900,
       },
@@ -93,8 +90,7 @@ const products = [
         variantId: "256gb-titanium-black",
         storage: "256GB",
         color: "Titanium Black",
-        image:
-          "https://placehold.co/600x600/1a1a1a/ffffff?text=Galaxy+S24+Ultra+Black",
+        image: "/images/GS24Black.jpg",
         mrp: 129999,
         price: 119999,
       },
@@ -102,8 +98,7 @@ const products = [
         variantId: "512gb-titanium-gray",
         storage: "512GB",
         color: "Titanium Gray",
-        image:
-          "https://placehold.co/600x600/6b6b6b/ffffff?text=Galaxy+S24+Ultra+Gray",
+        image: "/images/GS24Grey.jpg",
         mrp: 144999,
         price: 134999,
       },
@@ -121,8 +116,7 @@ const products = [
         variantId: "128gb-obsidian",
         storage: "128GB",
         color: "Obsidian",
-        image:
-          "https://placehold.co/600x600/2b2b2b/ffffff?text=Pixel+9+Pro+Obsidian",
+        image: "/images/gp9proObsidion.jpg",
         mrp: 109999,
         price: 99999,
       },
@@ -130,8 +124,7 @@ const products = [
         variantId: "256gb-porcelain",
         storage: "256GB",
         color: "Porcelain",
-        image:
-          "https://placehold.co/600x600/f0e9e0/1a1a1a?text=Pixel+9+Pro+Porcelain",
+        image: "/images/gp9proprocelain.jpg",
         mrp: 119999,
         price: 108999,
       },

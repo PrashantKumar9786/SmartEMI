@@ -5,9 +5,9 @@ export default function VariantSelector({
 }) {
   return (
     <div className="mb-6">
-      <p className="text-sm font-medium text-gray-700 mb-2">
+      <p className="text-sm font-medium text-black-700 mb-2">
         Variant:{" "}
-        <span className="text-gray-500 font-normal">
+        <span className="text-black-500 font-normal">
           {selectedVariant.storage} · {selectedVariant.color}
         </span>
       </p>
@@ -21,10 +21,10 @@ export default function VariantSelector({
               className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
                 isActive
                   ? "bg-gray-900 text-white border-gray-900"
-                  : "bg-white text-gray-700 border-gray-300 hover:border-gray-500"
+                  : "bg-white text-black-700 border-black-300 hover:border-gray-500"
               }`}
             >
-              {v.storage} {v.color}
+              {v.storage} | {v.color}
             </button>
           );
         })}
