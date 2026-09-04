@@ -6,13 +6,15 @@ export default function ProductCard({ product }) {
   return (
     <Link
       to={`/products/${product.slug}`}
-      className="group block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-200"
+      className="group block bg-white rounded-2xl border border-gray-200 overflow-hidden
+           hover:-translate-y-1 hover:shadow-lg
+           transition-all duration-300"
     >
       <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden">
         <img
           src={resolveImageUrl(product.image)}
           alt={product.name}
-          className="h-full w-[83%] object-cover group-hover:scale-105 transition-transform duration-300"
+          className="h-full w-full object-contain"
         />
       </div>
       <div className="p-4">
