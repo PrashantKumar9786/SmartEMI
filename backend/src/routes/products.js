@@ -5,8 +5,8 @@ const router = express.Router();
 
 /**
  * GET /api/products
- * Returns a lightweight list of all products for the catalog/listing page.
- * Only the first variant's price/image is included, to keep the payload small.
+ * Returns a list of all products for the catalog page.
+ * Only the first variant's price and image are included to keep the response small.
  */
 router.get("/", async (req, res) => {
   try {
@@ -35,7 +35,8 @@ router.get("/", async (req, res) => {
 
 /**
  * GET /api/products/:slug
- * Returns full product detail: all variants, each with full EMI plan list.
+ * Gets complete details of a product.
+ * Returns all variants and their EMI plans.
  */
 router.get("/:slug", async (req, res) => {
   try {

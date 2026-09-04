@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-
 /**
- * EMI Plan sub-schema.
- * Embedded inside each Variant because a plan has no meaning outside
- * the context of the variant's price. No separate collection needed.
+ * EMI Plan details.
+ * Stored inside each Variant because the EMI plan depends on
+ * the variant's price. No separate collection is required.
  */
 const emiPlanSchema = new mongoose.Schema(
   {
@@ -16,10 +15,10 @@ const emiPlanSchema = new mongoose.Schema(
 );
 
 /**
- * Variant sub-schema.
- * A variant is a specific sellable configuration of a product
- * (e.g. "256GB / Silver"). Each variant has its own price and
- * its own EMI plans, because price drives the EMI math.
+ * Variant details.
+ * A variant is a specific version of a product,
+ * such as "256GB / Silver".
+ * Each variant has its own price and EMI plans.
  */
 const variantSchema = new mongoose.Schema({
   variantId: { type: String, required: true }, // e.g. "256gb-silver" - unique within product
@@ -36,8 +35,8 @@ const variantSchema = new mongoose.Schema({
  */
 const productSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true }, // e.g. "iPhone 17 Pro"
-    slug: { type: String, required: true, unique: true, index: true }, // e.g. "iphone-17-pro"
+    name: { type: String, required: true }, // e.g. "Apple iPhone 17 Pro"
+    slug: { type: String, required: true, unique: true, index: true }, // e.g. " Apple iphone-17-pro"
     brand: { type: String, required: true },
     category: { type: String, default: "smartphone" },
     description: { type: String, default: "" },

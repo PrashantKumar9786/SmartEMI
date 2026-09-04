@@ -1,12 +1,15 @@
 /**
- * Seed script — wipes the products collection and inserts sample data.
- * Run with: npm run seed
+ * Seed script — clears all existing products and adds sample products.
+ * Run using: npm run seed
  *
- * EMI generation logic (mirrors the reference Snapmint page):
- *  - Short tenures (3/6/12/24 months): 0% interest, plan amount = price / tenure
- *  - Long tenures (36/48/60 months): flat interest rate applied, since real EMI
- *    lenders usually charge interest beyond a "0% window" period.
- *  - Cashback: a flat incentive amount, same across all tenures for a given variant.
+ * EMI rules:
+ *  - 3, 6, 12, and 24 months: 0% interest.
+ *    EMI = product price / number of months.
+ *
+ *  - 36, 48, and 60 months: interest is added to the EMI.
+ *
+ *  - Cashback: a fixed cashback amount is given for each product variant,
+ *    and the cashback stays the same for all EMI durations.
  */
 require("dotenv").config();
 const connectDB = require("./db");
@@ -15,8 +18,8 @@ const Product = require("../models/Product");
 function generateEmiPlans(price) {
   const zeroInterestTenures = [3, 6, 12, 24];
   const interestTenures = [36, 48, 60];
-  const interestRate = 10.5; // percent, flat rate applied on principal for the tenure
-  const cashback = Math.round((price * 0.03) / 100) * 100; // ~3% of price, rounded to nearest 100
+  const interestRate = 10.5; // Fixed interest is charged as a percentage of the original price.
+  const cashback = Math.round((price * 0.03) / 100) * 100; // Cashback is about 3% of the product price, rounded to the nearest ₹100.
 
   const plans = [];
 
